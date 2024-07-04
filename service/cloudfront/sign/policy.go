@@ -50,6 +50,11 @@ type IPAddress struct {
 	SourceIP string `json:"AWS:SourceIp"`
 }
 
+type ViewLiftMetadata struct {
+	Cid        string `json:"Cid"`
+	LiveStream bool   `json:"LiveStream"`
+}
+
 // A Condition defines the restrictions for how a signed URL can be used.
 type Condition struct {
 	// Optional IP address mask the signed URL must be requested from.
@@ -62,6 +67,9 @@ type Condition struct {
 	// Required date that the signed URL will expire. A DateLessThan is required
 	// sign cloud front URLs
 	DateLessThan *AWSEpochTime `json:",omitempty"`
+
+	// Custom viewlift metadata
+	ViewLiftMetadata ViewLiftMetadata `json:"ViewLiftMetadata"`
 }
 
 // A Statement is a collection of conditions for resources
